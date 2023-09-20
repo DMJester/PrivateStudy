@@ -2,15 +2,21 @@
 
 import sys
 
-N = int(sys.stdin.readline().strip())
-P = list(map(int, sys.stdin.readline().strip().split()))
-acc_sum = 0
+N, K = map(int, sys.stdin.readline().strip().split())
+A = []
 res = 0
 
-P.sort()
+for i in range(N):
+    val = int(sys.stdin.readline().strip())
+    if val > K:
+        continue
+    else :
+        A.append(val)
 
-for i in P:
-    acc_sum += i
-    res += acc_sum
+A.reverse()
+    
+for val in A:
+    res += int(K / val)
+    K = K % val
 
 print(res)
