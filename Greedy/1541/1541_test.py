@@ -4,34 +4,22 @@ import sys
 
 with open("./Greedy/1541/input.txt", 'r') as f:
     cal_str = f.readline().strip()
-    
-    tmp = ''
-    num_list = []
-    ops_list = []  
-    
     res = 0
-    res_list = [] 
+       
+    p_list = cal_str.split('-')
+    m_list = []
+    sum = 0
+    for p in p_list:
+        num_list = p.split('+')
+        sum = 0
+        for n in num_list:
+            sum += int(n)
+        m_list.append(sum)
     
-    for c in cal_str:
-        if c == '+' or c == '-':
-            num_list.append(int(tmp))
-            ops_list.append(c)
-            tmp = ''
-        else :
-            tmp += c
-    num_list.append(int(tmp))
-    
-    for idx, ops in enumerate(ops_list):
-        if ops == '+':
-            res_list.append( num_list[idx] + num_list[idx+1] )
-        if ops == '-':
-            res_list.append( num_list[idx] )
-            num_list.append( num_list[idx+1] )
-    
-    for idx, r in enumerate(res_list):
+    for idx, m in enumerate(m_list):
         if idx == 0:
-            res = r
+            res = m
         else :
-            
+            res -= m
             
     print(res)

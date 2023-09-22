@@ -1,22 +1,24 @@
-#https://www.acmicpc.net/problem/11399
+#https://www.acmicpc.net/problem/1541
 
 import sys
 
-N, K = map(int, sys.stdin.readline().strip().split())
-A = []
+cal_str = sys.stdin.readline().strip()
 res = 0
-
-for i in range(N):
-    val = int(sys.stdin.readline().strip())
-    if val > K:
-        continue
-    else :
-        A.append(val)
-
-A.reverse()
     
-for val in A:
-    res += int(K / val)
-    K = K % val
-
+p_list = cal_str.split('-')
+m_list = []
+sum = 0
+for p in p_list:
+    num_list = p.split('+')
+    sum = 0
+    for n in num_list:
+        sum += int(n)
+    m_list.append(sum)
+        
+for idx, m in enumerate(m_list):
+    if idx == 0:
+        res = m
+    else :
+        res -= m
+    
 print(res)
