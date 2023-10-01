@@ -22,7 +22,7 @@ def binary_search_right(array, target, start_idx, end_idx):
             end_idx = mid - 1
     return end_idx
 
-with open("./Sort/10816/input.txt", "r") as f:
+with open("./BinarySearch/10816/input.txt", "r") as f:
     N = int(f.readline().strip())
     N_list = list(map(int, f.readline().strip().split()))
     M = int(f.readline().strip())

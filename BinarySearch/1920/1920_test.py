@@ -14,7 +14,7 @@ def binary_search(array, target, start_idx, end_idx):
             start_idx = mid + 1
     return 0
 
-with open("./Sort/1920/input.txt", "r") as f:
+with open("./BinarySearch/1920/input.txt", "r") as f:
     N = int(f.readline().strip())
     N_list = list(map(int, f.readline().strip().split()))
     M = int(f.readline().strip())

@@ -48,7 +48,7 @@ def binary_search( start_idx, end_idx ):
             start_idx = mid + 1
     return res
 
-with open("./Sort/2805/input.txt", "r") as f:
+with open("./BinarySearch/2805/input.txt", "r") as f:
     N, M = map(int, f.readline().strip().split())
     wood_list = list(map(int, f.readline().strip().split()))
     
