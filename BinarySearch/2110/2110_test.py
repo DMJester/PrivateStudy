@@ -5,8 +5,8 @@ import sys
 def binary_search(start_idx, end_idx):
     while start_idx <= end_idx:
         mid = ( start_idx + end_idx ) // 2
-        
         router_cnt = 0
+        
     return
 
 with open("./BinarySearch/2110/input.txt", "r") as f:
