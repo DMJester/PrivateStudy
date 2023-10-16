@@ -11,4 +11,3 @@ for i in range(N):
         dp_table[j] = max(dp_table[j], dp_table[i] + work_list[i][1])
 
 print(dp_table[-1])
-
