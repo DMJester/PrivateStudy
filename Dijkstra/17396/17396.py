@@ -3,40 +3,38 @@
 import sys
 import heapq
 
-def dijkstra(start):
+def dijkstra():
     q = []
-    heapq.heappush(q, (0, start))
-    res[start] = 0
+    heapq.heappush(q, (0, 0))
+    res[0] = 0
     
     while q:
         now, dist = heapq.heappop(q)
         
-        if detect_list[now] == 1 and now < N-1:
-            continue
         if res[now] < dist:
             continue
         
         for idx, data in  enumerate(graph[now]):
             cost = dist + data[1]
-            if cost < res[data[0]]:
+            if cost < res[data[0]] and detect_list[data[0]] == 0:
                 res[data[0]] = cost
-                heapq.heappush(q, data)
+                heapq.heappush(q, (data[0], cost))
                 
-
 
 N, M = map(int, sys.stdin.readline().strip().split())
 detect_list = list(map(int, sys.stdin.readline().strip().split()))
+detect_list[-1] = 0
 graph = [[]for _ in range(N)]
-res = [float('inf')] * (N)
+res = [float('inf') for _ in range(N)]
 
 for _ in range(M):
-    sp, ep, cost = map(int, sys.stdin.readline().strip().split())
-    graph[sp].append((ep, cost))
-    graph[ep].append((sp, cost))
+    sp, ep, dist = map(int, sys.stdin.readline().strip().split())
+    graph[sp].append((ep, dist))
+    graph[ep].append((sp, dist))
         
-dijkstra(0) 
+dijkstra() 
 
-if max(res) == float('inf'):
+if res[-1] == float('inf'):
     print(-1)
 else :
-    print(max(res))
+    print(res[-1])
