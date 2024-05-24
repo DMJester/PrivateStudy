@@ -10,14 +10,16 @@ res = 0
 
 start = 0
 end = 0
-cnt = 0
 
 while start < N:
     while start <= end and end < N:
         if number_use[numbers[end]] == False:
             number_use[numbers[end]] = True
             end += 1
+            res += end - start
         else:
             number_use[numbers[start]] = False
+            cnt = 0
             start += 1
+    start += 1
 print(res)
