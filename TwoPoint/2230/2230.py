@@ -1,7 +1,7 @@
 import sys
 from io import StringIO
 
-sys.stdin = StringIO("".join(open("./2230/input.txt", "r").readlines()))
+sys.stdin = StringIO("".join(open("./TwoPoint/2230/input.txt", "r").readlines()))
 
 N, M = map(int, sys.stdin.readline().strip().split())
 numbers = [int(sys.stdin.readline().strip()) for i in range(N)]
