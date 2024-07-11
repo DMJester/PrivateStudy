@@ -6,7 +6,7 @@ sys.stdin = StringIO("".join(open("./23032/input.txt", "r").readlines()))
 N = int(sys.stdin.readline())
 W = list(map(int, sys.stdin.readline().strip().split()))
 res = 0
-
+ 
 tl = []
 tr = []
 
@@ -38,5 +38,5 @@ for mid in range(1, N):
         if diff <= prev:
             prev = diff
             res = max(res, (ls+rs))
-
+            
 print(res)
