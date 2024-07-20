@@ -2,13 +2,15 @@
 #샘플 자동 생성을 통해 정답 코드(란돔)와 비교하며 틀린 샘플을 찾아봤을때 나오지 않음
 #백준에 질문 글 올려놓고 대기 중 https://www.acmicpc.net/board/view/146209
 
+#cat_lang을 받아올때 .strip() 처리 후 100%
+
 import sys
 from io import StringIO
 
 sys.stdin = StringIO("".join(open("./TwoPoint/16472/input.txt", "r").readlines()))
 
 N = int(sys.stdin.readline().strip())
-cat_lang = list(sys.stdin.readline())
+cat_lang = list(sys.stdin.readline().strip()
 res = 0
 
 start = 0
