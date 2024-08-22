@@ -17,11 +17,15 @@ while min_time <= max_time:
     disc_cnt = 0
     
     for time in course:
-        if check_time + time >= set_time:
+        check_time += time
+        if check_time > set_time:
             disc_cnt += 1
             check_time = 0
-        check_time += time
-            
+            check_time += time
+        elif check_time == set_time:
+            disc_cnt += 1
+            check_time = 0
+        
     if disc_cnt >= M:
         min_time = set_time + 1
         res = set_time
