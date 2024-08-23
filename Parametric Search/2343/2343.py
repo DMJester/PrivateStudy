@@ -20,16 +20,15 @@ while min_time <= max_time:
         check_time += time
         if check_time > set_time:
             disc_cnt += 1
-            check_time = 0
-            check_time += time
+            check_time = time
         elif check_time == set_time:
             disc_cnt += 1
             check_time = 0
         
-    if disc_cnt >= M:
-        min_time = set_time + 1
+    if disc_cnt <= M:
+        max_time = set_time - 1
         res = set_time
     else:
-        max_time = set_time - 1
+        min_time = set_time + 1
             
 print(res)
