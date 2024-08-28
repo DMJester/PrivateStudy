@@ -13,10 +13,16 @@ right = 1000000000 * M
 while left <= right:
     set_ea = ( left + right ) // 2
     kid_cnt = 0
-    envy = 0
+    envy = 1000000000 * M
     
     for j in jewels:
-        quotient, remain = divmod(j, set_ea)
+        if set_ea <= j:
+            quotient, remain = divmod(j, set_ea)
+        else:
+            kid_cnt = 0
+            envy = 1000000000 * M
+            break
+            
         kid_cnt += quotient
         envy = set_ea
         
@@ -25,10 +31,9 @@ while left <= right:
             envy += 1
 
     if kid_cnt >= N:
-        right -= 1
+        left = set_ea + 1
         res = min(res, envy)
     else:
-        left += 1
+        right = set_ea - 1
 print(res)
-        
         
