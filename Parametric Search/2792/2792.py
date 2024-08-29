@@ -9,22 +9,22 @@ jewels = [int(sys.stdin.readline().strip()) for _ in range(M)]
 res = (1000000000 * M) + 1
 
 left = 1
-right = 1000000000 * M
+right = max(jewels)
 while left <= right:
     set_ea = ( left + right ) // 2
     kid_cnt = 0
-    envy = 1000000000 * M
+    envy = 0
     
     for j in jewels:
         if set_ea <= j:
             quotient, remain = divmod(j, set_ea)
         else:
             kid_cnt = 0
-            envy = 1000000000 * M
+            envy = 0
             break
             
         kid_cnt += quotient
-        envy = set_ea
+        envy = max(envy, set_ea)
         
         while remain >= 1:
             remain -= quotient
