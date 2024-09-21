@@ -1,3 +1,4 @@
+#https://www.acmicpc.net/problem/27932
 import sys
 from io import StringIO
 
@@ -22,17 +23,9 @@ while low <= high:
     H = ( low + high ) // 2
     exhausted_cnt = 0
     
-    idx = 0
-    while idx <= n-1:
-        for i, h in enumerate(height_diff[idx]):
-            if h > H:
-                if i == 0:
-                    exhausted_cnt += 1
-                else :
-                    exhausted_cnt += 2
-                    idx += 1
-                break
-        idx += 1
+    for h in height_diff:
+        if h[0] > H or h[1] > H:
+            exhausted_cnt += 1
     
     if exhausted_cnt > k:
         low = H + 1
