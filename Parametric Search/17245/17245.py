@@ -7,10 +7,19 @@ sys.stdin = StringIO("".join(open("./Parametric Search/17245/input.txt").readlin
 
 N = int(sys.stdin.readline().strip())
 room = [list(map(int, sys.stdin.readline().strip().split())) for _ in range(N)]
-computer_heights = sum(room, [])
+#computer_heights = sum(room, [])
+#computer_cnt = sum(computer_heights)
+
+res = 0
+
+computer_heights = []
+for y in range(N):
+    for x in range(N):
+        if room[y][x] != 0:
+            computer_heights.append(room[y][x])
+        
 computer_cnt = sum(computer_heights)
 half = math.ceil(computer_cnt / 2) 
-res = 0
 
 low_time = 1
 high_time = 10000000
