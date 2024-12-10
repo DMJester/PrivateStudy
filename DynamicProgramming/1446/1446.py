@@ -12,5 +12,4 @@ running_in_the_90s = [float('inf') for _ in range(10001)]
 q = heapq()
 q = 
 
-    
 print(graph)
