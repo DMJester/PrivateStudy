@@ -8,6 +8,8 @@ N, D = map(int, sys.stdin.readline().strip().split())
 shortcuts = [ list(map(int, sys.stdin.readline().strip().split())) for _ in range(N) ] 
 running_in_the_90s = [i for i in range(D+1)]
 
+shortcuts.sort(key=lambda x: x[0])
+
 for sp, ep, dist in shortcuts:
   for now in range(ep, D+1):
       if now == ep:
