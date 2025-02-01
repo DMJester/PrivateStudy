@@ -10,6 +10,7 @@ str1 += sys.stdin.readline().strip()
 str2 += sys.stdin.readline().strip()
 
 dp_table = [[0 for _ in range(len(str2))] for __ in range(len(str1))]
+test_str = []
 
 for y in range(1, len(str1)):
   for x in range(1, len(str2)):
