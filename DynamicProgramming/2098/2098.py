@@ -6,7 +6,7 @@ from io import StringIO
 
 def dfs(start, visited) :
     if visited == visited_all:
-        print(start, visited, dp[start][visited])
+        #print(start, visited, dp[start][visited])
         if W[start][0] != 0:
             dp[start][visited] = W[start][0]
             return W[start][0]
