@@ -12,7 +12,7 @@ def dfs(start, depth, sp):
   if depth == C-1:
     res += 1
     end_check[sp] = True
-    return True
+    return
   
   for dir in dirs:
     if start + dir[0] >= 0 and start + dir[0] < R and depth + dir[1] >= 0 and depth + dir[1] < C and pipe_map[start+dir[0]][depth+dir[1]] != 'x':
