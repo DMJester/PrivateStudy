@@ -12,12 +12,12 @@ res = []
 cnt = 0
 
 for num in numbers:
-  while cnt < K and res :
-    if res[-1] <= num:
-      res.pop()
-      cnt -= 1
-
+  while cnt < K and res and res[-1] < num :
+    res.pop()
+    cnt += 1
   res.append(num)
-  cnt += 1
   
-print(res)
+while cnt < K:
+  cnt += 1
+  res.pop()
+print("".join(res))
