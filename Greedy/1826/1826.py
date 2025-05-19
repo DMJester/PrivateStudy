@@ -7,25 +7,25 @@ import heapq
 
 sys.stdin = StringIO("".join(open("./Greedy/1826/input.txt", "r").readlines()))
 
-T = int(sys.stdin.readline().strip())
+N = int(sys.stdin.readline().strip())
 
-for idx in range(T):
-  N = int(sys.stdin.readline().strip())
-  Slimes = list(map(int, sys.stdin.readline().strip().split()))
-  heapq.heapify(Slimes)
-  step = []
-  res = 1
-  
-  if N == 1:
-    print(res)
-    continue
-  
-  while len(Slimes) >= 2:
-    Slime1 = heapq.heappop(Slimes)
-    Slime2 = heapq.heappop(Slimes)
-    
-    Slimes.append( Slime1 * Slime2 )
-    step.append(Slime1 * Slime2)
-  for s in step:
-    res *= s
-  print(res % 1000000007)
+GasStations = [list(map(int, sys.stdin.readline().strip().split())) for _ in range(N)]
+GasStations = sorted(GasStations, key=lambda x: x[0])  
+
+L, P = map(int, sys.stdin.readline().strip().split())
+GasStations.append((L, 0))
+
+res = 0
+now_loc = 0
+next_gss = []
+for gs in GasStations:
+  if gs[0]-now_loc <= P:
+    heapq.heappush(next_gss, (-1*gs[1], gs[0]))
+  else:
+    stop_station = heapq.heappop(next_gss)
+    P = (P - (stop_station[1]-now_loc)) + abs(stop_station[0])
+    now_loc = stop_station[1]
+    heapq.heappush(next_gss, (-1*gs[1], gs[0]))
+    res += 1
+print(res)
+      
