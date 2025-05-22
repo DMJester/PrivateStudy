@@ -10,22 +10,24 @@ sys.stdin = StringIO("".join(open("./Greedy/1826/input.txt", "r").readlines()))
 N = int(sys.stdin.readline().strip())
 
 GasStations = [list(map(int, sys.stdin.readline().strip().split())) for _ in range(N)]
-GasStations = sorted(GasStations, key=lambda x: x[0])  
+destination, fuel = map(int, sys.stdin.readline().strip().split())
 
-L, P = map(int, sys.stdin.readline().strip().split())
-GasStations.append((L, 0))
+GasStations = sorted(GasStations, key=lambda x: x[0])  
+GasStations.append((destination, 0))
 
 res = 0
-now_loc = 0
-next_gss = []
+prev_gs = []
+
 for gs in GasStations:
-  if gs[0]-now_loc <= P:
-    heapq.heappush(next_gss, (-1*gs[1], gs[0]))
+  if fuel - gs[0] < 0:
+    while prev_gs:
+      fuel += abs(heapq.heappop(prev_gs))
+      res += 1
+      if fuel - gs[0] >= 0:
+        break
+  if len(prev_gs) == 0 and fuel - gs[0] < 0:
+    res = -1
+    break
   else:
-    stop_station = heapq.heappop(next_gss)
-    P = (P - (stop_station[1]-now_loc)) + abs(stop_station[0])
-    now_loc = stop_station[1]
-    heapq.heappush(next_gss, (-1*gs[1], gs[0]))
-    res += 1
+    heapq.heappush(prev_gs, -gs[1])
 print(res)
-      
