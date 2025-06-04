@@ -21,8 +21,8 @@ while nl <= nr:
     T.append(S[nr])
     nr -= 1
   else:
-    nnl = nl
-    nnr = nr
+    nnl = nl + 1
+    nnr = nr - 1
     isAppend = False
     while nnl <= nnr:
       if S[nnl] < S[nnr]:
