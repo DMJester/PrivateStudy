@@ -21,7 +21,7 @@ for idx, cal in enumerate(topping_cals):
   total_cal += cal
   now_cal_cost = total_cal // total_price
   
-  if now_cal_cost > res:
+  if now_cal_cost >= res:
     res = now_cal_cost
   else:
     break
