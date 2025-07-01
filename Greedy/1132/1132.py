@@ -13,32 +13,34 @@ N = int(sys.stdin.readline())
 alp_strs = [[c for c in sys.stdin.readline().strip()] for __ in range(N)]
 alphabets = {'A':0, 'B':0, 'C':0, 'D':0, 'E':0, 'F':0, 'G':0, 'H':0, 'I':0, 'J':0 }
 first_alphabet = set()
+max_len = 0
 res = 0
 
 for alp_str in alp_strs:
   offset = len(alp_str)
+  max_len = max(max_len, offset)
   for idx, alp in enumerate(alp_str):
     if idx == 0:
       first_alphabet.add(alp)
     alphabets[alp] += (10 ** offset)
     offset -= 1
 
-sorted_alphabets = sorted(alphabets.items(), key=lambda x: x[1], reverse=False)
+sorted_alphabets = sorted(alphabets.items(), key=lambda x: x[1], reverse=True)
 
-set_value = 1
-set_zero = False
+
+for idx in range(9, 0, -1):
+  if sorted_alphabets[idx][1] != 0:
+    if sorted_alphabets[idx][0] not in first_alphabet:
+      alphabets[sorted_alphabets[idx][0]] = 0
+      break
+  else:
+    break
+   
+set_value = 9 
 for key, val in sorted_alphabets:
-  if val != 0:
-    if key in first_alphabet:
-      alphabets[key] = set_value
-      set_value += 1
-    else:
-      if not set_zero:
-        alphabets[key] = 0
-        set_zero = True
-      else:
-        alphabets[key] = set_value
-        set_value += 1
+  if val != 0 and alphabets[key] != 0:
+    alphabets[key] = set_value
+    set_value -= 1
 
 for alp_str in alp_strs:
   res += AlpToNum(alp_str, alphabets)
