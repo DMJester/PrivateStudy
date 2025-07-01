@@ -27,7 +27,6 @@ for alp_str in alp_strs:
 
 sorted_alphabets = sorted(alphabets.items(), key=lambda x: x[1], reverse=True)
 
-
 for idx in range(9, 0, -1):
   if sorted_alphabets[idx][1] != 0:
     if sorted_alphabets[idx][0] not in first_alphabet:
