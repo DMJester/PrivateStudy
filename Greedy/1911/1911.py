@@ -18,5 +18,4 @@ for p in pools:
   plank = (math.ceil((p[1] - now)/L))
   now += plank * L
   res += plank
-
 print(res)
